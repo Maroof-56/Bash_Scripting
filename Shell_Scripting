@@ -168,19 +168,102 @@ ________________________________________________________________________________
       - Root UID is always  - 0
       
       
-   1. $#    - Give the number of arguments passes to a script or function.
+   1. $#    - Give the total number of arguments passes to a script or function.
    
    2. $?    - Last command was executed successfully or not.
    
    3. ${0}  - Give you the file name
       
-   4. ${1}  - This will hold/store the arguments that passes through script.
+   4. ${1}  - This will hold/store the first arguments that passes through script.
    
-   5. $@    - Gives you the number of arguments passes through script
+   5. $@    - Gives you the list of arguments passes through script.each arg preserve as individual word
    
    6. ${@}  - It will store all the arguments passes thorugh script
    
+   7. $$    - process id of the script.
    
+   8. Exit status - 126 command not found nor executable return status is
+   
+                    127 comand not found  child created to executable
+                    
+   9. dpkg -l | grep docker  - to get exact pakage name & can easily delete.
+   
+   10. -t
+        Ex : read -p(prompt) "our school" school -t 5
+            ( simply this prompt will vanish after 5s )
+            
+   11. -s   
+        Instead of -t when u put -s 
+            ( this will not print your input instead it can print something different )
+        It can used in password prompt.
+        
+   12. -z  - for zero 
+   
+   13. grep with many exprsssion such as 
+   
+       -i - ignore case senstitive
+       -o - gives u exact match of the character u give
+       -n - show u numbers of line with character
+       -w - give u whole  word
+       -v - ignore the provided character &print rest
+
+                    
+   COMMAND LINE ARGUMENTS
+   
+      command-line-arguments are the parameter that are passed while executing the script.
+      They are also known as poitional parameter
+   
+   CUT command
+   
+      Used to cut the section from each line of files.
+      Use to cut the line of part by byte,character and field.
+      Basically it slice a line & extract the text.
+      
+      EX : 
+      1.  For Extracting any alphabets from line
+            In a file there is text in line wise 1.My name is Maroof 2.Sir name is shaikh
+      
+          - cut b -1 file_name  ( b - bytes )
+            o/p  - m  s    ( first byte of each line ) similarly 1,2,3 to extract bytes of you need   
+            
+            
+      2. For extracting any field from line
+      
+          - cut -d " " -f 1   ( d - delimiter (ignoring space , f - field u want)
+            Note: without delimiter field woulnot extract it will print whole line .
+            o/p - My  sir
+            
+    SED 
+    
+       - SED is a strean editor
+       - Peform function like 
+           - Viewing the file content
+           - searching
+           - find & replace
+           - insertion & deletion.
+           - Complex pattern matching.
+           
+       - Advantage
+           - SED can perform any operation on file without opening the file 
+           
+       - Commands
+       
+           - sed '' file_name
+           - sed 'p' file_name       ( print output twice )
+           - sed '5d' file_name      ( delete the line - 4,7d-from 4to 7 delete )
+           - sed -i.back '4d' file_name  ( it will make backup file before deleting )
+           - sed 's/maroof/mrf' file_name  ( it will replace maroof to mrf in file, s - substitute )
+           - sed -i.back 's/maroof/mrf/g' file_name  ( It make changes originally in final globally )
+           - sed '/Line/s/maroof/mrf/g' file_name  ( Line is text present in file line for search that line it put )
+          
+           
+       - Insertion & deletion
+       
+           - sed -i '1i ----This is file-----' fileB
+              To insert any line in file, 1i- Before the 1st line content file_namme
+           - sed -i '2a ---End----' file_name   ( after the line ) 
+           - 
+          
    LS > File_name    ( single > means override the new things ) 
    
     it wil copy all the file of that loc into specified filename
